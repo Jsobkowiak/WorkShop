@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+<center>
+
+    <h1>ADMINISTRATION</h1>
+    <div class="container row">
+
+        {% for poubelle in poubelles %}
+        {% if poubelle.alertes.count > 0 %}
+        <div class="col p-4 m-4 border-1 rounded border border-black">
+            <p>Problème sur la poubelle {{poubelle.id}}</p>
+            <p>La poubelle a {{poubelle.alertes.count}} alertes</p>
+            <a href="{{path('supprime-alerte', {'id':poubelle.id})}}"><button type="" class="btn btn-danger rounded-0">Supprimer l'alerte</button></a>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</center>
+
+
+
+
+
+{% endblock %}
